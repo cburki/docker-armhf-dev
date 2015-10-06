@@ -2,7 +2,7 @@ Summary
 -------
 
 Docker image for armhf (Raspberry Pi) development with SSH server. This image
-install the toolchain for cross copiling codes for Raspberry Pi. It includes
+install the toolchain for cross compiling codes for Raspberry Pi. It includes
 an SSH server in order to connect to the container and build projects. The
 codes of your projects are stored in a volume.
 
