@@ -1,7 +1,7 @@
 #!/bin/bash
 
-STATUS_FILE=/opt/rpi_toolchain.status
-TOOLCHAIN_PATH=/opt/rpi_toolchain
+STATUS_FILE=/opt/rpi-toolchain.status
+TOOLCHAIN_PATH=/opt/rpi-toolchain
 
 if [ -f ${STATUS_FILE} ]; then
 
