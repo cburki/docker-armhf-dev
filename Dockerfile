@@ -3,8 +3,10 @@ MAINTAINER Christophe Burki, christophe@burkionline.net
 
 # Install system requirements
 RUN apt-get update && apt-get install -y \
+    automake \
     emacs24-nox \
     git \
+    libtool \
     locales \
     make \
     openssh-server \
