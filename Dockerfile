@@ -32,6 +32,7 @@ COPY configs/etc/s6 /etc/s6/
 
 # install setup
 COPY scripts/setup.sh /opt/
+RUN chmod a+x /opt/setup.sh
 
 # add go path
 RUN echo "PATH=$PATH:/usr/local/go/bin" >> /root/.bashrc
