@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     emacs24-nox \
     git \
     libtool \
+    libtool-bin \
     locales \
     make \
     openssh-server \
@@ -14,9 +15,7 @@ RUN apt-get update && apt-get install -y \
     swig2.0
 
 # Configure locales and timezone
-RUN locale-gen en_US.UTF-8
-RUN locale-gen en_GB.UTF-8
-RUN locale-gen fr_CH.UTF-8
+RUN locale-gen en_US.UTF-8 en_GB.UTF-8 fr_CH.UTF-8
 RUN cp /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 RUN echo "Europe/Zurich" > /etc/timezone
 
