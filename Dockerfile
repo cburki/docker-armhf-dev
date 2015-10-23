@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     make \
     openssh-server \
     python2.7 \
+    pwgen \
     swig2.0
 
 # Configure locales and timezone
@@ -30,12 +31,10 @@ RUN mkdir /root/.ssh
 COPY bin/* /usr/bin/
 COPY configs/etc/s6 /etc/s6/
 
-# install setup
-COPY scripts/setup.sh /opt/
-RUN chmod a+x /opt/setup.sh
-
-# add go path
-RUN echo "PATH=$PATH:/usr/local/go/bin" >> /root/.bashrc
+# install setup scripts
+COPY scripts/* /opt/
+RUN chmod a+x /opt/setuptoolchain.sh
+RUN chmod a+x /opt/setupusers.sh
 
 EXPOSE 22
 

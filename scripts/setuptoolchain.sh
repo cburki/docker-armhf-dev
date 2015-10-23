@@ -19,5 +19,6 @@ git clone git://github.com/raspberrypi/tools.git
 echo 'PS1="\[\e[00;36m\][\$?]\[\e[0m\]\[\e[00;30m\] \[\e[0m\]\[\e[00;32m\]\u@\h\[\e[0m\]\[\e[00;30m\] \[\e[0m\]\[\e[00;34m\][\W]\[\e[0m\]\[\e[00;30m\] \\$ \[\e[0m\]"' >> /root/.bashrc
 echo "PATH=${PATH}:${TOOLCHAIN_PATH}/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin" >> /root/.bashrc
 
-echo "done" > ${STATUS_FILE}
+echo $TOOLCHAIN_PATH > ${STATUS_FILE}
+
 exit 0
