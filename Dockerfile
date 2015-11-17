@@ -33,8 +33,7 @@ COPY configs/etc/s6 /etc/s6/
 
 # install setup scripts
 COPY scripts/* /opt/
-RUN chmod a+x /opt/setuptoolchain.sh
-RUN chmod a+x /opt/setupusers.sh
+RUN chmod a+x /opt/setuptoolchain.sh /opt/setupusers.sh /opt/setupgit.sh
 
 EXPOSE 22
 

@@ -3,8 +3,9 @@
 # setup cross compilation toolchain
 /opt/setuptoolchain.sh
 
-# setup users
+# setup users and git
 /opt/setupusers.sh
+/opt/setupgit.sh
 
 # start ssh
 /usr/sbin/sshd -D
