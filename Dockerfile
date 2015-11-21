@@ -30,10 +30,11 @@ RUN mkdir /root/.ssh
 # s6 install and config
 COPY bin/* /usr/bin/
 COPY configs/etc/s6 /etc/s6/
+RUN a+x /usr/bin/s6-*
 
 # install setup scripts
 COPY scripts/* /opt/
-RUN chmod a+x /opt/setuptoolchain.sh /opt/setupusers.sh /opt/setupgit.sh
+RUN chmod a+x /opt/setuptoolchain.sh /opt/setupusers.sh /opt/setupgit.sh /opt/setupenv.sh
 
 EXPOSE 22
 
