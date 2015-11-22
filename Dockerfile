@@ -30,7 +30,7 @@ RUN mkdir /root/.ssh
 # s6 install and config
 COPY bin/* /usr/bin/
 COPY configs/etc/s6 /etc/s6/
-RUN a+x /usr/bin/s6-*
+RUN chmod a+x /usr/bin/s6-*
 
 # install setup scripts
 COPY scripts/* /opt/
