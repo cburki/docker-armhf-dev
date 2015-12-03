@@ -1,13 +1,19 @@
 #!/bin/bash
 
-STATUS_FILE=/opt/rpi-toolchain.status
-TOOLCHAIN_PATH=$(cat ${STATUS_FILE})
+USER_STATUS_FILE=/opt/setupuser.status
+TOOLCHAIN_STATUS_FILE=/opt/rpi-toolchain.status
+TOOLCHAIN_PATH=$(cat ${TOOLCHAIN_STATUS_FILE})
+
+if [ -f ${USER_STATUS_FILE} ]; then
+    exit 0
+fi
+
 
 if [ -n "${SSH_PASSWORD}" ]; then
     echo "root:${SSH_PASSWORD}" | chpasswd
 fi
 
-if [ -n "${SSH_AUTHORIZED_KEY}" ]; then
+if [ ! -f /root/.ssh/authorized_keys] && [ -n "${SSH_AUTHORIZED_KEY}" ]; then
     echo "${SSH_AUTHORIZED_KEY}" > /root/.ssh/authorized_keys
 fi
 
@@ -28,7 +34,7 @@ if [ -n "${SSH_USER}" ]; then
     fi
     echo "${SSH_USER}:${SSH_PASSWORD}" | chpasswd
     
-    if [ -n "${SSH_AUTHORIZED_KEY}" ]; then
+    if [ ! -f /home/${SSH_USER}/.ssh/authorized_keys ] && [ -n "${SSH_AUTHORIZED_KEY}" ]; then
         mkdir -p /home/${SSH_USER}/.ssh
         echo "${SSH_AUTHORIZED_KEY}" > /home/${SSH_USER}/.ssh/authorized_keys
     fi
@@ -45,5 +51,7 @@ if [ -n "${SSH_USER}" ]; then
     chown ${SSH_USER}:${SSH_USER} /home/${SSH_USER}/.profile
     chown -R ${SSH_USER}:${SSH_USER} /home/${SSH_USER}/.ssh
 fi
+
+echo "done" >> ${USER_STATUS_FILE}
 
 exit 0
