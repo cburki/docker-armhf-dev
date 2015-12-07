@@ -31,10 +31,17 @@ RUN mkdir /root/.ssh
 COPY bin/* /usr/bin/
 COPY configs/etc/s6 /etc/s6/
 RUN chmod a+x /usr/bin/s6-*
+RUN chmod a+x /etc/s6/.s6-svscan/finish /etc/s6/sshd/run /etc/s6/sshd/finish
 
 # install setup scripts
 COPY scripts/* /opt/
 RUN chmod a+x /opt/setuptoolchain.sh /opt/setupusers.sh /opt/setupgit.sh /opt/setupenv.sh
+
+# install compiler configs
+COPY configs/platform.mk /opt/
+
+# add bash prompt
+RUN echo 'PS1="\[\e[00;36m\][\$?]\[\e[0m\]\[\e[00;30m\] \[\e[0m\]\[\e[00;32m\]\u@\h\[\e[0m\]\[\e[00;30m\] \[\e[0m\]\[\e[00;34m\][\W]\[\e[0m\]\[\e[00;30m\] \\$ \[\e[0m\]"' >> /root/.bashrc
 
 EXPOSE 22
 
