@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p /opt/build
 mkdir -p /opt/usr/arm-linux
 
 if [ -n "${SSH_USER}" ]; then
