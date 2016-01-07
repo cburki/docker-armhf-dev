@@ -13,7 +13,7 @@ if [ -n "${SSH_PASSWORD}" ]; then
     echo "root:${SSH_PASSWORD}" | chpasswd
 fi
 
-if [ ! -f /root/.ssh/authorized_keys] && [ -n "${SSH_AUTHORIZED_KEY}" ]; then
+if [ -n "${SSH_AUTHORIZED_KEY}" ]; then
     echo "${SSH_AUTHORIZED_KEY}" > /root/.ssh/authorized_keys
 fi
 
