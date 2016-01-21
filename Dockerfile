@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     emacs24-nox \
     git \
+    less \
     libtool \
     libtool-bin \
     locales \
