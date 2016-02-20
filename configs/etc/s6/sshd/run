@@ -9,4 +9,4 @@
 /opt/setupenv.sh
 
 # start ssh
-/usr/sbin/sshd -D
+exec /usr/sbin/sshd -D
