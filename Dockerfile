@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-server \
     python2.7 \
     pwgen \
-    swig2.0 && \
+    swig2.0 \
+    tmux && \
     apt-get autoremove -y && \
     apt-get clean
 
@@ -44,9 +45,12 @@ RUN chmod a+x /opt/setuptoolchain.sh /opt/setupusers.sh /opt/setupgit.sh /opt/se
 # install compiler configs
 COPY configs/platform.mk /opt/
 
-# add pager and bash prompt
+# setup shell environment
+COPY configs/tmux/tmux.conf /root/.tmux.conf
 RUN echo 'PAGER=less' >> /root/.bashrc && \
-    echo 'PS1="\[\e[00;36m\][\$?]\[\e[0m\]\[\e[00;30m\] \[\e[0m\]\[\e[00;32m\]\u@\h\[\e[0m\]\[\e[00;30m\] \[\e[0m\]\[\e[00;34m\][\W]\[\e[0m\]\[\e[00;30m\] \\$ \[\e[0m\]"' >> /root/.bashrc
+    echo 'TERM=xterm' >> /root/.bashrc && \
+    echo 'PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]\[\e[32m\]:\[\e[m\]\[\e[34m\]\W\[\e[m\] \[\e[34m\]\\$\[\e[m\] "' >> /root/.bashrc && \
+    echo '[ -z "$TMUX" ] && command -v tmux > /dev/null && tmux && exit 0' >> /root/.bashrc
 
 EXPOSE 22
 
