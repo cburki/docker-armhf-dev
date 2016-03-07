@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python2.7 \
     pwgen \
     swig2.0 \
-    tmux && \
+    tmux \
+    xterm && \
     apt-get autoremove -y && \
     apt-get clean
 
