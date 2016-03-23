@@ -47,7 +47,7 @@ if [ -n "${SSH_USER}" ]; then
         echo "TERM=xterm" >> /home/${SSH_USER}/.bashrc
         echo 'PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]\[\e[32m\]:\[\e[m\]\[\e[34m\]\W\[\e[m\] \[\e[34m\]\\$\[\e[m\] "' >> /home/${SSH_USER}/.bashrc
         echo "PATH=${PATH}:${TOOLCHAIN_PATH}/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin" >> /home/${SSH_USER}/.bashrc
-        echo '[ -z "$TMUX" ] && command -v tmux > /dev/null && tmux && exit 0' >> /home/${SSH_USER}/.bashrc
+        echo '#[ -z "$TMUX" ] && command -v tmux > /dev/null && tmux && exit 0' >> /home/${SSH_USER}/.bashrc
     fi
     
     chown ${SSH_USER}:${SSH_USER} /home/${SSH_USER}
