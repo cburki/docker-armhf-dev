@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-server \
     python2.7 \
     pwgen \
-    swig2.0 \
+    swig3.0 \
     tmux \
     xterm && \
     apt-get autoremove -y && \
@@ -48,8 +48,8 @@ COPY configs/platform.mk /opt/
 
 # setup shell environment
 COPY configs/tmux/tmux.conf /root/.tmux.conf
-RUN echo 'PAGER=less' >> /root/.bashrc && \
-    echo 'TERM=xterm' >> /root/.bashrc && \
+RUN echo 'export PAGER=less' >> /root/.bashrc && \
+    echo 'export TERM=xterm' >> /root/.bashrc && \
     echo 'PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]\[\e[32m\]:\[\e[m\]\[\e[34m\]\W\[\e[m\] \[\e[34m\]\\$\[\e[m\] "' >> /root/.bashrc && \
     echo '#[ -z "$TMUX" ] && command -v tmux > /dev/null && tmux && exit 0' >> /root/.bashrc
 
