@@ -16,7 +16,7 @@ if [ ! -f /root/.gitconfig ]; then
 
         echo "Setting git name to ${GIT_NAME}"
         git config --global user.name "${GIT_NAME}"
-    
+
         if [ -n "${SSH_USER}" ]; then
             cp /root/.gitconfig /home/${SSH_USER}/.
         fi

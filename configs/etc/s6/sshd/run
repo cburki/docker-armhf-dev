@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# setup cross compilation toolchain
-/opt/setuptoolchain.sh
-
 # setup users, git and development environment
 /opt/setupusers.sh
 /opt/setupgit.sh
 /opt/setupenv.sh
+
+# setup cross compilation toolchain
+/opt/setuptoolchain.sh
 
 # start ssh
 exec /usr/sbin/sshd -D
