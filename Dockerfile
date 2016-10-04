@@ -13,9 +13,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
     make \
     openssh-server \
+    python \
     python2.7 \
     pwgen \
-    swig3.0 \
     tmux \
     xterm && \
     apt-get autoremove -y && \
